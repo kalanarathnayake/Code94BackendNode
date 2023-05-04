@@ -2,7 +2,7 @@ const Product = require("../model/product.model");
 
 // add Product function
 const addProduct = async (req, res) => {
-    const { sku, quantity, productName, imgUrl, productDescription, isFavourite } = req.body;
+    const { sku, quantity, productName, imgUrl, productDescription, isFavourite, price } = req.body;
     const product = new Product({
         sku,
         quantity,
@@ -10,6 +10,7 @@ const addProduct = async (req, res) => {
         imgUrl,
         productDescription,
         isFavourite,
+        price
     });
 
     await product.save()
@@ -27,6 +28,7 @@ const updateProduct = async (req, res) => {
             existingProduct.imgUrl = req.body.imgUrl;
             existingProduct.productDescription = req.body.productDescription;
             existingProduct.isFavourite = req.body.isFavourite;
+            existingProduct.price = req.body.price;
 
             existingProduct.save()
                 .then((updatedProduct) => res.json("Product Details Updated : " + updatedProduct))

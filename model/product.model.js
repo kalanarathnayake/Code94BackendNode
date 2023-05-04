@@ -7,7 +7,9 @@ const productSchema = new Schema({
     productName: { type: String, required: true },
     imgUrl: { type: String, required: true },
     productDescription: { type: String, required: true },
-    isFavourite: { type: Boolean, required: true }
+    isFavourite: { type: Boolean, required: true },
+    price: { type: String, required: true },
+
 }, {
     timestamps: true,
 })
