@@ -18,6 +18,7 @@ async function connectMongoDB() {
 }
 
 app.use('/product', require('./route/product.route'));
+app.use('/admin', require('./route/Admin.route'));
 
 app.listen(port, () => {
   console.log(`app listening on port ${port}`);
