@@ -1,13 +1,16 @@
 const express = require('express');
 const cors = require('cors');
-
+const env= require('dotenv').config()
 const app = express();
-app.use(cors({ origin: ['http://localhost:3000'] })); //cors origin
+const mongoose = require('mongoose');
+
+const port = process.env.PORT;
+const backendURL = process.env.REACT_APP_BACKEND_URL;
+
+app.use(cors({ origin: [backendURL] })); //cors origin
 app.use(express.json());
 app.use(express.urlencoded());
-const mongoose = require('mongoose');
 // mongoose.set('strictQuery', false);
-const port = process.env.PORT || 8091;
 
 app.get('/', (req, res) => {
   res.send('ITP Backend API Running');
