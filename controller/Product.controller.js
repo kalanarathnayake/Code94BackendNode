@@ -10,7 +10,9 @@ const addProduct = async (req, res) => {
     productDescription,
     isFavourite,
     price,
-  } = req.body;
+  } = req.body.product;
+  console.log(req.body.product);
+
   const product = new Product({
     sku,
     quantity,
@@ -24,7 +26,11 @@ const addProduct = async (req, res) => {
   await product
     .save()
     .then(() => res.json('product created!' + product))
-    .catch((err) => res.status(400).json('Error (create): ' + err));
+    .catch((err) => {
+      console.log(err);
+      res.status(400).json('Error (create): ' + err)
+    });
+
 };
 
 // update Product function
